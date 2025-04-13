@@ -24,6 +24,7 @@ searchInput.addEventListener('keypress', (e) => {
     }
 });
 
+//Updates the application's language based on the user's selection and re-fetches weather data to display content in the chosen language.
 function handleLanguageChange(event) {
     currentLanguage = event.target.value;
 
@@ -359,7 +360,7 @@ async function getWeatherByCoords(lat, lon) {
         toggleLoading(false);
     }
 }
-
+//Changing color background based on the weather
 function updateBackground(weatherCondition) {
     console.log(`Updating background for: ${weatherCondition}`);
   
@@ -405,12 +406,12 @@ function updateBackground(weatherCondition) {
       // Handle error, e.g., display an error message to the user
     }
   }
-
+//Loads the list of preferred cities from local storage. If no cities are stored, an empty array is returned.
 function loadCities() {
     const storedCities = localStorage.getItem('preferredCities');
     return storedCities ? JSON.parse(storedCities) : [];
 }
-
+//Adds a new city to the list of preferred cities, updates the UI, and saves the new list to local storage.
 function addCityToList(city) {
     const cities = loadCities();
     cities.push(city);
@@ -418,6 +419,7 @@ function addCityToList(city) {
     saveCity(city);
 }
 
+//Displays a list of preferred cities in the UI, allowing users to quickly select and view weather information for those cities.
 function displayPreferredCities() {
     const cities = loadCities();
     cityList.innerHTML = '';
